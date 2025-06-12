@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "co.haply.inverse": "2.2.0",
+    "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.7",
     "com.unity.collab-proxy": "2.8.2",
     "com.unity.connect.share": "4.2.3",

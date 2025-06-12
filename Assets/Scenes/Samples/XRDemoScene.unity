@@ -1927,8 +1927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a72d289b1928f489fe05c2dae31976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  movementLimitRadius: 2
+  speed: 4
+  movementLimitRadius: 1
   forceEnabled: 0
   stiffness: 400
   damping: 1

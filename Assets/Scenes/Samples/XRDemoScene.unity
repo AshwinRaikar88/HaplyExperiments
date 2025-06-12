@@ -779,7 +779,7 @@ Transform:
   m_GameObject: {fileID: 435541902}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.394, y: 1.303, z: 1.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 914417478}
   - component: {fileID: 914417481}
   - component: {fileID: 914417480}
-  - component: {fileID: 914417479}
+  - component: {fileID: 914417482}
   m_Layer: 0
   m_Name: PhysicsEffector
   m_TagString: Untagged
@@ -1862,29 +1862,6 @@ Transform:
   - {fileID: 1632072120}
   m_Father: {fileID: 1315043658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &914417479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914417477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2425e8de2f1e149a03abbbe7512cc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceEnabled: 0
-  stiffness: 400
-  damping: 1
-  viscosity: 10
-  exponent: 2.5
-  drag: 20
-  linearLimit: 0.001
-  limitSpring: 500000
-  limitDamper: 10000
-  collisionDetection: 0
-  touched: []
 --- !u!23 &914417480
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1938,6 +1915,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914417477}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &914417482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914417477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a72d289b1928f489fe05c2dae31976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  movementLimitRadius: 1
+  forceEnabled: 0
+  stiffness: 400
+  damping: 1
+  viscosity: 1
+  exponent: 2.5
+  drag: 20
+  linearLimit: 0.001
+  limitSpring: 500000
+  limitDamper: 10000
+  collisionDetection: 0
+  touched: []
+  Inverse3: {fileID: 1315043661}
 --- !u!1 &967567311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2549,7 @@ Transform:
   m_GameObject: {fileID: 1315043657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.229, z: -0.105}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3599,7 +3602,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 128263156}
@@ -4067,7 +4070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f1f20991a410cae6e938993a78321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniformScale: 5
+  uniformScale: 3
   lockGizmos: 0
 --- !u!4 &1909118455
 Transform:
@@ -4078,8 +4081,8 @@ Transform:
   m_GameObject: {fileID: 1909118453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.86602545, z: 0, w: 0.49999994}
-  m_LocalPosition: {x: 3.944, y: 0.331, z: 1.367}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 4.394, y: 0.691, z: 1.111}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1315043658}

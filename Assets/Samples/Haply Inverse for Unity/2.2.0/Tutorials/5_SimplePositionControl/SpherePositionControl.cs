@@ -17,6 +17,7 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
     public class SpherePositionControl : MonoBehaviour
     {
         public Inverse3 inverse3;
+        public VerseGrip grip;
 
         [Tooltip("Minimum distance required to initiate synchronized control between this GameObject and the Inverse3 cursor.")]
         [Range(0, 1)]
@@ -27,12 +28,22 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
         [SerializeField]
         private Transform startPosition;
 
+        [SerializeField]
+        private Transform[] waypoints;
+
+        private int currentWaypointIndex = 0;
+        private bool isGripCycling = false;
+        private bool waitingForArrival = false;
+
+
+
         private void Awake()
         {
             // Ensure inverse3 is set, finding it in the scene if necessary.
             if (inverse3 == null)
             {
                 inverse3 = FindObjectOfType<Inverse3>();
+                grip =  FindObjectOfType<VerseGrip>();
             }
 
             // When inverse3 is ready, so the handedness is defined
@@ -54,6 +65,7 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
 
         private void Update()
         {
+           
             // Calculate the distance between the Inverse3 position and this object's position.
             var distance = Vector3.Distance(inverse3.CursorPosition, transform.position);
 
@@ -67,6 +79,16 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
             {
                 StopSynchronizeCursor();
             }
+
+            if (grip.GetButtonDown() && waypoints.Length > 0 && !waitingForArrival)
+            {
+                isGripCycling = true;
+                waitingForArrival = true;
+
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+                GetComponent<MovableObject>().SetTargetPosition(waypoints[currentWaypointIndex].position);
+            }
+
         }
 
         private void FixedUpdate()
@@ -75,6 +97,12 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
             {
                 // If in sync, set the Inverse3 cursor position to this object's position.
                 inverse3.CursorSetPosition(transform.position);
+            }
+
+            var movable = GetComponent<MovableObject>();
+            if (waitingForArrival && Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1)
+            {
+                waitingForArrival = false;
             }
         }
 

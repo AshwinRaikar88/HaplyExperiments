@@ -1435,8 +1435,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inverse3: {fileID: 1601800064}
+  grip: {fileID: 1601800066}
   minSyncDistance: 0.375
   startPosition: {fileID: 359877317}
+  waypoints:
+  - {fileID: 359877317}
+  - {fileID: 1381389798}
+  - {fileID: 1325652888}
 --- !u!114 &1756538324
 MonoBehaviour:
   m_ObjectHideFlags: 0

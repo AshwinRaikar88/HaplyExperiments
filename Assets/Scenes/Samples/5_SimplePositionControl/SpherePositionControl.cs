@@ -24,9 +24,6 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
 
         private bool _isCursorSynchronized;
 
-        [SerializeField]
-        private Transform startPosition;
-
         private void Awake()
         {
             // Ensure inverse3 is set, finding it in the scene if necessary.
@@ -41,7 +38,7 @@ namespace Haply.Samples.Tutorials._5_SimplePositionControl
                 // Teleport the sphere to its workspace center to ensure it can be reached,
                 // regardless of whether the device is left or right-handed. This ensures the GameObject starts in a
                 // position that is accessible by the Inverse3 device.
-                GetComponent<MovableObject>().SetTargetPosition(startPosition.position, teleport:true);
+                GetComponent<MovableObject>().SetTargetPosition(device.WorkspaceCenterLocalPosition, teleport:true);
             });
         }
 

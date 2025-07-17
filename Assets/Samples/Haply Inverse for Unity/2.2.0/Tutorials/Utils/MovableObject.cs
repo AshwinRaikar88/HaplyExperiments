@@ -47,6 +47,17 @@ namespace Haply.Samples.Tutorials.Utils
 
         public bool showGUI = true;
 
+        [Tooltip("List of target positions to cycle through.")]
+        [SerializeField]
+        private Transform[] waypoints;
+
+        [SerializeField]
+        private Transform startPosition;
+
+        private int currentWaypointIndex = 0;
+        private bool isCyclingWaypoints = false;
+
+
         // Used by SmoothDamp function to smooth out the object's movement.
         private Vector3 _movementVelocity = Vector3.zero;
 
@@ -57,7 +68,9 @@ namespace Haply.Samples.Tutorials.Utils
 
         private void OnEnable()
         {
-            BasePosition = transform.position;
+            // BasePosition = transform.position;
+            // basePosition = startPosition.position;
+            BasePosition = startPosition.position;
         }
 
         private void Update()
@@ -104,7 +117,14 @@ namespace Haply.Samples.Tutorials.Utils
 
         private void Move()
         {
-            if (RandomMoveEnabled && Vector3.Distance(transform.position, TargetPosition) < distanceThreshold)
+            if (isCyclingWaypoints)
+            {
+                if (Vector3.Distance(transform.position, TargetPosition) < distanceThreshold)
+                {
+                    isCyclingWaypoints = false;
+                }
+            }
+            else if (RandomMoveEnabled && Vector3.Distance(transform.position, TargetPosition) < distanceThreshold)
             {
                 TargetPosition = BasePosition + Random.insideUnitSphere * maxDistance;
             }
@@ -136,6 +156,13 @@ namespace Haply.Samples.Tutorials.Utils
 
         private void HandleInput()
         {
+            if (Input.GetKeyDown(KeyCode.F) && waypoints.Length > 0)
+            {
+                isCyclingWaypoints = true;
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+                SetTargetPosition(waypoints[currentWaypointIndex].position);
+            }
+
             // Toggle random movement with the Space key.
             if (Input.GetKeyDown(KeyCode.Space))
             {
